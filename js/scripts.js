@@ -43,6 +43,13 @@ for (var i = 0; i < repository.length; i++) {
 }
 
 function loopBlockFunction(currentPokemon) {
-  document.write(currentPokemon.name + "<br>");
+  document.write(
+    currentPokemon.name +
+      "<br> Height: " +
+      currentPokemon.height +
+      "<br> Types: " +
+      currentPokemon.types +
+      "<br><br>"
+  );
 }
 repository.forEach(loopBlockFunction);
