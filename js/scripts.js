@@ -1,55 +1,59 @@
-var repository = [
-  {
-    name: "Pikachu",
-    height: 0.4,
-    types: ["static", "lightningrod"]
-  },
-  {
-    name: "Charmander",
-    height: 0.6,
-    types: ["blaze", "solar-power"]
-  },
-  {
-    name: "Squirtle",
-    height: 0.5,
-    types: ["rain-dish", "torrent"]
-  },
-  {
-    name: "Bellsprout",
-    height: 0.7,
-    types: ["chlorophyll", "gluttony"]
-  },
-  {
-    name: "Seel",
-    height: 1.1,
-    types: ["thick-fat", "hydration", "ice-body"]
-  }
-];
+var pokemonRepository = (function() {
+  var repository = [
+    {
+      name: "Pikachu",
+      height: 0.4,
+      types: ["static", "lightningrod"]
+    },
+    {
+      name: "Charmander",
+      height: 0.6,
+      types: ["blaze", "solar-power"]
+    },
+    {
+      name: "Squirtle",
+      height: 0.5,
+      types: ["rain-dish", "torrent"]
+    },
+    {
+      name: "Bellsprout",
+      height: 0.7,
+      types: ["chlorophyll", "gluttony"]
+    },
+    {
+      name: "Seel",
+      height: 1.1,
+      types: ["thick-fat", "hydration", "ice-body"]
+    }
+  ];
 
-for (var i = 0; i < repository.length; i++) {
-  if (repository[i].height < 1.0) {
-    document.write(
-      "<p>" + repository[i].name + " (Height: " + repository[i].height + ")</p>"
-    );
-  } else {
-    document.write(
-      "<p>" +
-        repository[i].name +
-        " (Height: " +
-        repository[i].height +
-        ") - Wow, that's big! </p>"
-    );
+  function add(pokemon) {
+    if (typeof pokemon === "object") {
+      document.write(repository.push(pokemon));
+    } else {
+      alert("Added content contains incorrect type of data");
+    }
   }
-}
 
-function loopBlockFunction(currentPokemon) {
+  function getAll() {
+    return repository;
+  }
+
+  return {
+    add: add,
+    getAll: getAll
+  };
+})();
+
+pokemonRepository.getAll().forEach(function(pokemon) {
   document.write(
-    currentPokemon.name +
+    pokemon.name +
       "<br> Height: " +
-      currentPokemon.height +
+      pokemon.height +
       "<br> Types: " +
-      currentPokemon.types +
+      pokemon.types +
       "<br><br>"
   );
-}
-repository.forEach(loopBlockFunction);
+});
+
+pokemonRepository.add({ name: "Pikachu" });
