@@ -1,7 +1,15 @@
 body{
   font-family: 'Muli', sans-serif;
-  font-size: 24px;
+  font-size: 36px;
   line-height: 1.5;
   color: #fff;
   background-color: #2a75bb;
+}
+
+.selected{
+  border: 5px #ffcb05 solid;
+}
+
+ul{
+  list-style-type: none;
 }

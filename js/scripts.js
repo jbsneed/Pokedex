@@ -29,7 +29,7 @@ var pokemonRepository = (function() {
 
   function add(pokemon) {
     if (typeof pokemon === "object") {
-      document.write(repository.push(pokemon));
+      repository.push(pokemon);
     } else {
       alert("Added content contains incorrect type of data");
     }
@@ -41,19 +41,30 @@ var pokemonRepository = (function() {
 
   return {
     add: add,
-    getAll: getAll
+    getAll: getAll,
+    addListItem: addListItem,
+    showDetails: showDetails
   };
+
+  function showDetails(pokemon) {
+    console.log(pokemon.name);
+  }
+
+  function addListItem(pokemon) {
+    var $listItem = document.createElement("li");
+    var button = document.createElement("button");
+    button.innerText = pokemon.name;
+    button.classList.add("selected");
+    $listItem.appendChild(button);
+    $ul.appendChild($listItem);
+    button.addEventListener("click", function(event) {
+      showDetails(pokemon);
+    });
+  }
 })();
 
-pokemonRepository.getAll().forEach(function(pokemon) {
-  document.write(
-    pokemon.name +
-      "<br> Height: " +
-      pokemon.height +
-      "<br> Types: " +
-      pokemon.types +
-      "<br><br>"
-  );
-});
+var $ul = document.querySelector("ul");
 
-pokemonRepository.add({ name: "Pikachu" });
+pokemonRepository.getAll().forEach(function(pokemon) {
+  pokemonRepository.addListItem(pokemon);
+});
