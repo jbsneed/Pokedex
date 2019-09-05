@@ -1,4 +1,8 @@
-body{
+*{
+  box-sizing: border-box;
+  }
+
+  body{
   font-family: 'Muli', sans-serif;
   font-size: 36px;
   line-height: 1.5;
@@ -12,4 +16,38 @@ body{
 
 ul{
   list-style-type: none;
+}
+
+#modal-container{
+  display: none;
+  position: absolute;
+}
+
+button:hover{
+  cursor:pointer;
+}
+
+.modal-close{
+  float: right;
+  -webkit-appearance: none;
+  border:0;
+  background: none;
+  color: #000;
+  text-decoration: underline;
+}
+
+  #modal-container.is-visible{
+  display: block;
+  position: fixed;
+  padding: 20px;
+  top:0;
+  right:0;
+  width:50%;
+  height: 50%;
+  background: #ffcb05;
+  /* to show it above other content */
+  z-index:999;
+  /*center modal*/
+  display: grid;
+  border: 5px solid #000;
 }
