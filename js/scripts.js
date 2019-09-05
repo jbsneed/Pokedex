@@ -83,7 +83,7 @@ var pokemonRepository = (function() {
     closeButtonElement.innerText = "Close";
     closeButtonElement.addEventListener("click", hideModal);
 
-    var nameElement = document.createElement("h1");
+    var nameElement = document.createElement("h3");
     nameElement.innerText = item.name;
 
     var imageElement = document.createElement("img");
@@ -123,8 +123,8 @@ var pokemonRepository = (function() {
 
   $modalContainer.addEventListener("click", e => {
     var target = e.target;
-    if (target === $modalContainer) {
-      hideModal();
+    if (target !== $modalContainer) {
+      pokemonRepository.hideModal();
     }
   });
   return {
